@@ -1,0 +1,38 @@
+package com.lv.cloud.service.Impl;
+
+import com.lv.cloud.entity.UserInfo;
+import com.lv.cloud.mapper.UserInfoMapper;
+import com.lv.cloud.service.UserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Write class comments
+ * hereUser: lvzhen
+ * Date: 2020/4/30 13:49
+ * version $Id: UserInfoServiceImpl.java$
+ */
+@Service
+public class UserInfoServiceImpl implements UserInfoService {
+
+    @Autowired(required = false)
+    private UserInfoMapper userInfoMapper;
+
+    @Override
+    public boolean addUser(UserInfo user) {
+      return  userInfoMapper.addUser(user);
+    }
+
+    @Override
+    public UserInfo getUser(int id) {
+        System.out.println("microservice-provider2微服务在响应客户端请求……");
+        return userInfoMapper.getUser(id);
+    }
+
+    @Override
+    public List<UserInfo> getUsers() {
+        return userInfoMapper.getUsers();
+    }
+}
